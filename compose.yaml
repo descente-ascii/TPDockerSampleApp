@@ -1,0 +1,19 @@
+name: tpdocker
+version: '3'
+services:
+    nginx-proxy:
+        ports:
+            - 8080:80
+        volumes:
+            - /var/run/docker.sock:/tmp/docker.sock
+        tty: true
+        image: jwilder/nginx-proxy
+    nginx0:
+        environment:
+            - VIRTUAL_HOST=m
+        tty: true
+        stdin_open: true
+        image: nginx
+        deploy:
+        	mode : replicated
+        	replicas: 4

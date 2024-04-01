@@ -1,0 +1,12 @@
+name: tpdocker
+version: '3'
+services:
+  app-instances:
+    environment:
+      - VIRTUAL_HOST=m
+    tty: true
+    stdin_open: true
+    image: tpdockersampleapp
+    deploy:
+      mode: replicated
+      replicas: 4
